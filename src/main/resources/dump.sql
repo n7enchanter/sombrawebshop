@@ -1,11 +1,8 @@
-INSERT INTO sombrawebshop.user (username, email, password) VALUES ('n7enchanter', 'n7enchanter@gmail.com', '$2a$11$A9cJEwnqc3MYplGHiB5uk.4vZ9BkUCxOZwyD8Xt3iwWLdtbtisram');
-INSERT INTO sombrawebshop.user (username, email, password) VALUES ('terminus', 'n7terminus@gmail.com', '$2a$11$U3qKJfKkrzqIVmXMtpT4de/jCTVRxBnqlAPcSywugM02SDU2HSq6G');
-INSERT INTO sombrawebshop.user (username, email, password) VALUES ('n7terminus', 'n7terminus@gmail.com', '$2a$11$lGZ/hiMQ7kOO5kKJdbUHFOjHu6pnz.GFrk7TPm3B8qV9UoeaeSW9a');
+INSERT INTO sombrawebshop.user (username, email, password, role_id) VALUES ('n7enchanter', 'n7enchanter@gmail.com', '$2a$11$A9cJEwnqc3MYplGHiB5uk.4vZ9BkUCxOZwyD8Xt3iwWLdtbtisram', 2);
+INSERT INTO sombrawebshop.user (username, email, password, role_id) VALUES ('terminus', 'n7terminus@gmail.com', '$2a$11$U3qKJfKkrzqIVmXMtpT4de/jCTVRxBnqlAPcSywugM02SDU2HSq6G', 1);
+INSERT INTO sombrawebshop.user (username, email, password, role_id) VALUES ('n7terminus', 'n7terminus@gmail.com', '$2a$11$lGZ/hiMQ7kOO5kKJdbUHFOjHu6pnz.GFrk7TPm3B8qV9UoeaeSW9a', 1);
 INSERT INTO sombrawebshop.role (name) VALUES ('ROLE_USER');
 INSERT INTO sombrawebshop.role (name) VALUES ('ROLE_ADMIN');
-INSERT INTO sombrawebshop.user_roles (user_id, role_id) VALUES (6, 1);
-INSERT INTO sombrawebshop.user_roles (user_id, role_id) VALUES (5, 2);
-INSERT INTO sombrawebshop.user_roles (user_id, role_id) VALUES (7, 1);
 INSERT INTO sombrawebshop.product (product_name, product_price, product_description, product_image) VALUES ('iPhone', 60000, 'Iphone', 'http://blog.allo.ua/wp-content/uploads/Evolyutsiya-Apple-iPhone-iPhone-6.jpg');
 INSERT INTO sombrawebshop.product (product_name, product_price, product_description, product_image) VALUES ('Coat', 2000, 'Coat_Coat', 'http://fashion-wear.com.ua/uploads/posts/2015-10/myzhskoe-palto-sergio-ellini-011.jpg');
 INSERT INTO sombrawebshop.product (product_name, product_price, product_description, product_image) VALUES ('jacket', 5900000, 'jacketjacketjacket', 'http://www.salegid.com.ua/image/cache/catalog/lamoda/men/clothes/YTwo/YT002EMIIU92_1_v2-1100x1100.jpg');

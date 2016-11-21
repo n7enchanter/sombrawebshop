@@ -3,7 +3,9 @@ CREATE TABLE user
   id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
   username VARCHAR(45) NOT NULL,
   email VARCHAR(45) NOT NULL,
-  password VARCHAR(255) NOT NULL
+  password VARCHAR(255) NOT NULL,
+  role_id INT NOT NULL,
+  CONSTRAINT user_role_role_id_fk FOREIGN KEY (role_id) REFERENCES role (id)
 );
 
 CREATE TABLE role
@@ -11,13 +13,7 @@ CREATE TABLE role
   id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
   name VARCHAR(45) NOT NULL
 );
-CREATE TABLE user_roles
-(
-  user_id INT NOT NULL,
-  role_id INT NOT NULL,
-  CONSTRAINT use_roles_user_id_fk FOREIGN KEY (user_id) REFERENCES user (id),
-  CONSTRAINT use_roles_role_id_fk FOREIGN KEY (role_id) REFERENCES role (id)
-);
+
 CREATE TABLE product
 (
   id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
