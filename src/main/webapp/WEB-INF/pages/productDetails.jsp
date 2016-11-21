@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
 <html>
 <head>
@@ -27,12 +27,12 @@
 
 
 <div class="item-container">
-    <h1 style="margin-left: 20px;">${product.product_name}</h1>
+    <h1 style="margin-left: 20px;">${product.productName}</h1>
     <div class="container">
         <div class="col-md-12">
             <div class="product col-md-3 service-image-left">
 
-                <img id="item-display" src="${product.product_image}" />
+                <img id="item-display" src="${product.productImage}" />
 
             </div>
 
@@ -40,18 +40,23 @@
         </div>
 
         <div class="col-md-7">
-            <div class="product-desc">${product.product_description}</div>
+            <div class="product-desc">${product.productDescription}</div>
 
             <hr>
-            <div class="product-price"> ${product.product_price}</div>
+            <div class="product-price"> ${product.productPrice}</div>
             <hr>
             <div class="btn-group cart">
                 <c:if test="${not empty pageContext.request.userPrincipal}">
                     <c:if test="${pageContext.request.isUserInRole('ROLE_ADMIN')}">
-                        <a class="btn btn-default " href="${contextPath}/admin/edit/${product.id}" >Edit</a>
-                        <a class="btn btn-default" href="${contextPath}/admin/delete/${product.id}"  >Delete</a>
+                        <a style="margin-bottom: 10px;" class="btn btn-default " href="${contextPath}/admin/edit/${product.id}" >Edit</a>
+                        <form:form cssStyle="margin-top: 10px;" name = "deleteProduct" action="${contextPath}/admin/delete/${product.id}" method="DELETE">
+                            <input  type="submit" class="btn btn-default" value="Delete">
+                        </form:form>
                     </c:if>
-                        <a class="btn btn-default" href="${contextPath}/buy/${product.id}"  >Buy</a>
+                    <form:form cssStyle="margin-top: 10px;" name = "buyProduct" action="${contextPath}/buy/${product.id}" method="PUT">
+                        <input  type="submit" class="btn btn-default" value="Buy">
+                    </form:form>
+                       <!-- <a class="btn btn-default" href="${contextPath}/buy/${product.id}"  >Buy</a>-->
                 </c:if>
             </div>
 

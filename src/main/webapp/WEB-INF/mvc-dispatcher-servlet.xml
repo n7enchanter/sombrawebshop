@@ -47,22 +47,12 @@
     <bean id="roleDao" class="net.n7enchanter.webshop.dao.RoleDaoImpl">
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
-    <bean id="categoryService" class="net.n7enchanter.webshop.service.CategoryServiceImpl">
-        <property name="categoryDao" ref="categoryDao"/>
-    </bean>
-    <bean id="productService" class="net.n7enchanter.webshop.service.ProductServiceImpl">
-        <property name="productDao" ref="productDao"/>
-    </bean>
 
-    <bean id="userService" class="net.n7enchanter.webshop.service.UserServiceImpl">
-        <property name="userDao" ref="userDao"/>
-    </bean>
     <bean id="basketDao" class="net.n7enchanter.webshop.dao.BasketDaoImpl">
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
-    <bean id="basketService" class="net.n7enchanter.webshop.service.BasketServiceImpl">
-        <property name="basketDao" ref="basketDao"/>
-    </bean>
+
+
 
 
 

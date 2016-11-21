@@ -8,9 +8,9 @@ import java.util.List;
  * Created by Yuri on 29.10.2016.
  */
 public interface CategoryService {
-    void sava_category(Category category);
-    void update_category(Category category);
-    void delete_category(int id);
+    void savaCategory(Category category);
+    void updateCategory(Category category);
+    void deleteCategory(int id);
     Category findById(int id);
     List<Category> findAll();
 }

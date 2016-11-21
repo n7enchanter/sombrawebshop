@@ -26,15 +26,15 @@ public class CategoryDaoImpl implements CategoryDao{
         this.sessionFactory = sessionFactory;
     }
 
-    public void sava_category(Category category) {
+    public void savaCategory(Category category) {
         getSessionFactory().getCurrentSession().persist(category);
     }
 
-    public void update_category(Category category) {
+    public void updateCategory(Category category) {
         getSessionFactory().getCurrentSession().update(category);
     }
 
-    public void delete_category(int id) {
+    public void deleteCategory(int id) {
         Session session = getSessionFactory().getCurrentSession();
         Category category = session.get(Category.class,new Integer(id));
         if(category!=null){

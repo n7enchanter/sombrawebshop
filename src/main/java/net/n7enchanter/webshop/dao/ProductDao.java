@@ -9,9 +9,9 @@ import java.util.List;
  */
 
 public interface ProductDao {
-    void save_product(Product product);
-    void delete_product(int id);
-    void update_product(Product product);
+    void saveProduct(Product product);
+    void deleteProduct(int id);
+    void updateProduct(Product product);
     Product findById(int id);
     List<Product> findAll();
     List<Product> searchQuery(String query);

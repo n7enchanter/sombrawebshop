@@ -9,7 +9,7 @@ import java.util.List;
  * Created by Yuri on 03.11.2016.
  */
 public interface RoleDao {
-    void save_role(Role role);
-    Role findByid(int id);
+    void saveRole(Role role);
+    Role findById(int id);
     List<Role> getAll();
 }

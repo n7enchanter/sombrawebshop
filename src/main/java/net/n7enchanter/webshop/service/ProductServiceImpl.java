@@ -23,16 +23,16 @@ public class ProductServiceImpl implements ProductService {
         this.productDao = productDao;
     }
 
-    public void save_product(Product product) {
-        productDao.save_product(product);
+    public void saveProduct(Product product) {
+        productDao.saveProduct(product);
     }
 
-    public void delete_product(int id) {
-        productDao.delete_product(id);
+    public void deleteProduct(int id) {
+        productDao.deleteProduct(id);
     }
 
-    public void update_product(Product product) {
-        productDao.update_product(product);
+    public void updateProduct(Product product) {
+        productDao.updateProduct(product);
     }
 
     public Product findById(int id) {

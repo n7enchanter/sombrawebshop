@@ -31,74 +31,32 @@ public class BasketController {
     @RequestMapping(value = "/basket" ,method = RequestMethod.GET)
 
     private String getBasket(Model model){
-        String username =  SecurityContextHolder.getContext().getAuthentication().getName();
-        Basket basket = basketService.getBasket(username);
-        if(basket==null){
-            basket = new Basket();
-            basket.setName(username);
-            basketService.save_basket(basket);
-            basket = basketService.getBasket(username);
-
-        }
-
-        List<Product> products = basket.getProducts();
-        int items = products.size();
+        List<Product> products =basketService.getProducts();
         model.addAttribute("products",products);
-        model.addAttribute("items",items);
+        model.addAttribute("items",products.size());
 
         return "basket";
     }
-    @RequestMapping(value = "/buy/{id}", method = RequestMethod.GET)
-    private String buyproduct(@PathVariable("id") int id, @ModelAttribute("product") Product product){
-        String username =  SecurityContextHolder.getContext().getAuthentication().getName();
-        Basket basket = basketService.getBasket(username);
-        if(basket==null){
-            basket = new Basket();
-            basket.setName(username);
-            basketService.save_basket(basket);
-            basket = basketService.getBasket(username);
-        }
-        List<Product> products = basket.getProducts();
-        products.add(product);
-        basket.setProducts(products);
-        if(basketService.getBasket(username)==null){
-            basketService.save_basket(basket);
-
-        }
-        else{
-        basketService.update_basket(basket);
-        }
+    @RequestMapping(value = "/buy/{id}", method = RequestMethod.PUT)
+    private String buyProduct(@PathVariable("id") int id, @ModelAttribute("product") Product product){
+       basketService.buyProduct(product);
         return "redirect:/product";
 
     }
-    @RequestMapping(value = "/basket/purchase")
+    @RequestMapping(value = "/basket/purchase", method = RequestMethod.DELETE)
     public String purchase(){
-        String username =  SecurityContextHolder.getContext().getAuthentication().getName();
-        Basket basket = basketService.getBasket(username);
-        basket.getProducts().clear();
-        basketService.update_basket(basket);
+       basketService.deleteAllProducts();
         return "redirect:/product";
     }
-    @RequestMapping(value = "/basket/remove")
+    @RequestMapping(value = "/basket/remove" , method = RequestMethod.DELETE)
     public String clearBasket(){
-        String username =  SecurityContextHolder.getContext().getAuthentication().getName();
-        Basket basket = basketService.getBasket(username);
-        basket.getProducts().clear();
-        basketService.update_basket(basket);
+        basketService.deleteAllProducts();
         return "redirect:/product";
     }
 
-    @RequestMapping(value = "/basket/remove/{id}")
+    @RequestMapping(value = "/basket/remove/{id}" , method = RequestMethod.DELETE)
     public String removeProduct(@PathVariable("id") int id){
-        String username =  SecurityContextHolder.getContext().getAuthentication().getName();
-        Basket basket = basketService.getBasket(username);
-        Product product = productService.findById(id);
-        List<Product> products = basket.getProducts();
-        //products.remove(product);
-        int index = products.indexOf(product);
-        products.remove(index+1);
-        basket.setProducts(products);
-        basketService.update_basket(basket);
+        basketService.deleteProduct(id);
         return "redirect:/basket";
     }
 }

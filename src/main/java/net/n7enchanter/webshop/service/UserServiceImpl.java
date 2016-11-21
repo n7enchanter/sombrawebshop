@@ -31,22 +31,21 @@ public class UserServiceImpl implements UserService {
         this.userDao = userDao;
     }
 
-    public void save_user(User user) {
+    public void saveUser(User user) {
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
-        List<Role> roles = new ArrayList<Role>();
-        roles.add(roleDao.findByid(1));
-        user.setRoles(roles);
-        userDao.save_user(user);
+        Role role = roleDao.findById(1);
+        user.setRole(role);
+        userDao.saveUser(user);
 
     }
 
-    public void update_user(User user) {
+    public void updateUser(User user) {
 
-        userDao.update_user(user);
+        userDao.updateUser(user);
     }
 
-    public void delete_user(int id) {
-        userDao.delete_user(id);
+    public void deleteUser(int id) {
+        userDao.deleteUser(id);
 
     }
 

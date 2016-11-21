@@ -13,7 +13,7 @@ import java.util.List;
  * Created by Yuri on 03.11.2016.
  */
 @Repository
-@Transactional
+
 public class UserDaoImpl implements UserDao{
     @Autowired
     SessionFactory sessionFactory;
@@ -25,17 +25,17 @@ public class UserDaoImpl implements UserDao{
     public void setSessionFactory(SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;
     }
-
-    public void save_user(User user) {
+    @Transactional
+    public void saveUser(User user) {
         getSessionFactory().getCurrentSession().persist(user);
     }
 
-    public void update_user(User user) {
+    public void updateUser(User user) {
         getSessionFactory().getCurrentSession().update(user);
 
     }
 
-    public void delete_user(int id) {
+    public void deleteUser(int id) {
         Session session = getSessionFactory().getCurrentSession();
         User user = getSessionFactory().getCurrentSession().get(User.class,new Integer(id));
         if(user != null){
@@ -61,7 +61,7 @@ public class UserDaoImpl implements UserDao{
             return null;
         }
     }
-
+    @Transactional
     public List<User> getAll() {
             return (List<User>) getSessionFactory().getCurrentSession().createCriteria(User.class).list();
     }

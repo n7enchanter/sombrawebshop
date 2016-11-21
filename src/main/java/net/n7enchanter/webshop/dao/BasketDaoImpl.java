@@ -11,7 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
  * Created by Yuri on 06.11.2016.
  */
 @Repository
-@Transactional
+
 public class BasketDaoImpl implements BasketDao {
     @Autowired
     private SessionFactory sessionFactory;
@@ -23,15 +23,15 @@ public class BasketDaoImpl implements BasketDao {
     public void setSessionFactory(SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;
     }
-
-    public void save_basket(Basket basket) {
+    @Transactional
+    public void saveBasket(Basket basket) {
         getSessionFactory().getCurrentSession().persist(basket);
     }
-
-    public void update_basket(Basket basket) {
+    @Transactional
+    public void updateBasket(Basket basket) {
         getSessionFactory().getCurrentSession().update(basket);
     }
-
+    @Transactional
     public Basket getBasket(String username) {
         Basket basket = (Basket)getSessionFactory().getCurrentSession().createCriteria(Basket.class).add(Restrictions.eq("name",username)).uniqueResult();
         return basket;

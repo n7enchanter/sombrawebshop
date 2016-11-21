@@ -23,16 +23,16 @@ public class CategoryServiceImpl implements CategoryService {
         this.categoryDao = categoryDao;
     }
 
-    public void sava_category(Category category) {
-        categoryDao.sava_category(category);
+    public void savaCategory(Category category) {
+        categoryDao.savaCategory(category);
     }
 
-    public void update_category(Category category) {
-        categoryDao.update_category(category);
+    public void updateCategory(Category category) {
+        categoryDao.updateCategory(category);
     }
 
-    public void delete_category(int id) {
-        categoryDao.delete_category(id);
+    public void deleteCategory(int id) {
+        categoryDao.deleteCategory(id);
     }
 
     public Category findById(int id) {

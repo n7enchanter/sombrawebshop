@@ -43,9 +43,9 @@ public class ProductController {
 
         return "admin";
     }
-    @RequestMapping(value = "/admin/delete/{id}")
+    @RequestMapping(value = "/admin/delete/{id}" , method = RequestMethod.DELETE)
     public String removeProduct(@PathVariable("id") int id){
-        productService.delete_product(id);
+        productService.deleteProduct(id);
         return "redirect:/product";
     }
     @RequestMapping(value = "/admin/edit/{id}")
@@ -62,14 +62,14 @@ public class ProductController {
         return "product";
 
     }
-    @RequestMapping(value = "/admin/product/add")
+    @RequestMapping(value = "/admin/product/add" , method = RequestMethod.POST)
     public String addProduct(@ModelAttribute("product")Product product){
         int id = product.getId();
         if(id == 0){
-            productService.save_product(product);
+            productService.saveProduct(product);
             return "redirect:/product";
         }else {
-            productService.update_product(product);
+            productService.updateProduct(product);
             return "redirect:/product/"+id;
         }
 

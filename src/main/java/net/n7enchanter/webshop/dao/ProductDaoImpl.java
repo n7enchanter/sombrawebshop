@@ -14,7 +14,6 @@ import java.util.List;
  * Created by Yuri on 29.10.2016.
  */
 @Repository
-@Transactional
 public class ProductDaoImpl implements ProductDao {
     @Autowired
     private SessionFactory sessionFactory;
@@ -26,12 +25,12 @@ public class ProductDaoImpl implements ProductDao {
     public void setSessionFactory(SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;
     }
-
-    public void save_product(Product product) {
+    @Transactional
+    public void saveProduct(Product product) {
         getSessionFactory().getCurrentSession().persist(product);
     }
-
-    public void delete_product(int id) {
+    @Transactional
+    public void deleteProduct(int id) {
         Session session = getSessionFactory().getCurrentSession();
         Product product = getSessionFactory().getCurrentSession().get(Product.class,new Integer(id));
         if(product != null){
@@ -40,18 +39,18 @@ public class ProductDaoImpl implements ProductDao {
         }
 
     }
-
-    public void update_product(Product product) {
+    @Transactional
+    public void updateProduct(Product product) {
         getSessionFactory().getCurrentSession().update(product);
 
     }
-
+    @Transactional
     public Product findById(int id) {
         Product product = getSessionFactory().getCurrentSession().get(Product.class,new Integer(id));
         return product;
 
     }
-
+    @Transactional
     public List<Product> findAll() {
         List<Product> products = getSessionFactory().getCurrentSession().createCriteria(Product.class).list();
         return products;

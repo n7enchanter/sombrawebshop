@@ -32,25 +32,30 @@
     <div class="item  col-xs-4 col-lg-4" style="margin-left: 10px; max-width: 420px; ">
         <div class="thumbnail">
             <a href="${contextPath}/product/${product.id}">
-            <img class="group list-group-image" src="${product.product_image}" />
+            <img class="group list-group-image" src="${product.productImage}" />
             </a>
             <div class="caption">
                 <h4 class="group inner list-group-item-heading">
-                    ${product.product_name}</h4>
+                    ${product.productName}</h4>
                 <p class="group inner list-group-item-text">
-                ${product.product_description}</p>
+                ${product.productDescription}</p>
                 <div class="row">
                     <div class="col-xs-12 col-md-6">
-                    <p class="lead">${product.product_price/100}${product.product_price%100}</p>
+                    <p class="lead">${product.productPrice/100}${product.productPrice%100}</p>
                     </div>
                 </div>
             </div>
             <c:if test="${not empty pageContext.request.userPrincipal}">
                 <c:if test="${pageContext.request.isUserInRole('ROLE_ADMIN')}">
                     <a class="btn btn-default " href="${contextPath}/admin/edit/${product.id}" >Edit</a>
-                    <a class="btn btn-default" href="${contextPath}/admin/delete/${product.id}">Delete</a>
+                    <form:form cssStyle="margin-top: 10px;" name = "deleteProduct" action="${contextPath}/admin/delete/${product.id}" method="DELETE">
+                        <input  type="submit" class="btn btn-default" value="Delete">
+                    </form:form>
                 </c:if>
-                    <a class="btn btn-default" href="${contextPath}/buy/${product.id}">Buy</a>
+                <form:form cssStyle="margin-top: 10px;" name = "buyProduct" action="${contextPath}/buy/${product.id}" method="PUT">
+                    <input  type="submit" class="btn btn-default" value="Buy">
+                </form:form>
+                    <!--<a class="btn btn-default" href="${contextPath}/buy/${product.id}">Buy</a>-->
             </c:if>
 
         </div>

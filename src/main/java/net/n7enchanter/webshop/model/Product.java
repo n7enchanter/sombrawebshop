@@ -21,36 +21,44 @@ public class Product {
     @Column(name = "id")
     private int id;
     @Column(name = "product_name")
-    private String product_name;
+    private String productName;
     @Column(name = "product_price")
-    private int product_price;
+    private int productPrice;
     @Column(name = "product_description")
-    private String product_description;
+    private String productDescription;
     @Column(name = "product_image")
-    private String product_image;
+    private String productImage;
     @JsonIgnore
     @ManyToMany
     @JoinTable(name = "product_category",joinColumns = @JoinColumn(name = "product_id"),inverseJoinColumns = @JoinColumn(name = "category_id"))
     private List<Category> categories;
+    @ManyToMany(mappedBy = "products")
+    private List<Basket> baskets;
 
 
-
-
-
-    public Product(String product_name, int product_price,  String product_description, List<Category> categories, String product_image) {
-        this.product_name = product_name;
-        this.product_price = product_price;
-        this.product_description = product_description;
+    public Product(String productName, int productPrice, String productDescription, String productImage, List<Category> categories, List<Basket> baskets) {
+        this.productName = productName;
+        this.productPrice = productPrice;
+        this.productDescription = productDescription;
+        this.productImage = productImage;
         this.categories = categories;
-        this.product_image = product_image;
+        this.baskets = baskets;
     }
 
-    public String getProduct_image() {
-        return product_image;
+    public List<Basket> getBaskets() {
+        return baskets;
     }
 
-    public void setProduct_image(String product_image) {
-        this.product_image = product_image;
+    public void setBaskets(List<Basket> baskets) {
+        this.baskets = baskets;
+    }
+
+    public String getProductImage() {
+        return productImage;
+    }
+
+    public void setProductImage(String productImage) {
+        this.productImage = productImage;
     }
 
     public Product() {
@@ -64,28 +72,28 @@ public class Product {
         this.id = id;
     }
 
-    public String getProduct_name() {
-        return product_name;
+    public String getProductName() {
+        return productName;
     }
 
-    public void setProduct_name(String product_name) {
-        this.product_name = product_name;
+    public void setProductName(String productName) {
+        this.productName = productName;
     }
 
-    public int getProduct_price() {
-        return product_price;
+    public int getProductPrice() {
+        return productPrice;
     }
 
-    public void setProduct_price(int product_price) {
-        this.product_price = product_price;
+    public void setProductPrice(int productPrice) {
+        this.productPrice = productPrice;
     }
 
-    public String getProduct_description() {
-        return product_description;
+    public String getProductDescription() {
+        return productDescription;
     }
 
-    public void setProduct_description(String product_description) {
-        this.product_description = product_description;
+    public void setProductDescription(String productDescription) {
+        this.productDescription = productDescription;
     }
 
     public List<Category> getCategories() {

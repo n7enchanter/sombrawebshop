@@ -12,7 +12,6 @@ import java.util.List;
  * Created by Yuri on 03.11.2016.
  */
 @Repository
-@Transactional
 public class RoleDaoImpl implements RoleDao {
     @Autowired
     SessionFactory sessionFactory;
@@ -25,12 +24,12 @@ public class RoleDaoImpl implements RoleDao {
         this.sessionFactory = sessionFactory;
     }
 
-    public void save_role(Role role) {
+    public void saveRole(Role role) {
         getSessionFactory().getCurrentSession().persist(role);
 
     }
-
-    public Role findByid(int id) {
+    @Transactional
+    public Role findById(int id) {
         return getSessionFactory().getCurrentSession().get(Role.class,new Integer(id));
     }
 

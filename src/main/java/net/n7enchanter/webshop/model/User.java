@@ -25,21 +25,17 @@ public class User {
     private String password;
     @Transient
     private String confirmPassword;
-    @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "role_id"))
-    private List<Role> roles;
-
+    @ManyToOne
+    private Role role;
     public User() {
     }
 
-    public User(String username, String email, String password, String confirmPassword,  List<Role> roles) {
+    public User(String username, String email, String password, String confirmPassword, Role role) {
         this.username = username;
         this.email = email;
         this.password = password;
         this.confirmPassword = confirmPassword;
-        this.roles = roles;
-
+        this.role = role;
     }
 
     public int getId() {
@@ -82,12 +78,12 @@ public class User {
         this.confirmPassword = confirmPassword;
     }
 
-    public List<Role> getRoles() {
-        return roles;
+    public Role getRole() {
+        return role;
     }
 
-    public void setRoles(List<Role> roles) {
-        this.roles = roles;
+    public void setRole(Role role) {
+        this.role = role;
     }
 }
 

@@ -42,44 +42,44 @@
                     <div class="container" name="image-div">
 
                     </div>
-                    <form:form action="${contextPath}/admin/product/add" commandName="product">
+                    <form:form method="post" action="${contextPath}/admin/product/add" commandName="product">
                         <div class="form-group">
-                            <c:if test="${!empty product.product_name}">
+                            <c:if test="${!empty product.productName}">
                                 <form:label path="id"><spring:message text="ID"/></form:label>
                                 <form:input path="id" readonly="true" size="8" disabled="true"/>
                                 <form:hidden path="id"/>
                             </c:if>
                         </div>
                         <div class="form-group">
-                            <form:label path="product_image" class="sr-only">
+                            <form:label path="productImage" class="sr-only">
                                 <spring:message text="Image"/>
                             </form:label>
-                            <form:input id="load" class="form-control" path="product_image"/>
+                            <form:input id="load" class="form-control" path="productImage"/>
                         </div>
                         <div class="form-group">
-                            <form:label path="product_name" class="sr-only">
+                            <form:label path="productName" class="sr-only">
                                 <spring:message text="Name"/>
                             </form:label>
-                            <form:input class="form-control" path="product_name"/>
+                            <form:input class="form-control" path="productName"/>
                         </div>
                         <div class="form-group">
-                            <form:label path="product_price" class="sr-only">
+                            <form:label path="productPrice" class="sr-only">
                                 <spring:message text="Price"/>
                             </form:label>
-                            <form:input class="form-control" path="product_price"/>
+                            <form:input class="form-control" path="productPrice"/>
                         </div>
                         <div class="form-group">
                             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-                            <form:label path="product_description" class="sr-only">
+                            <form:label path="productDescription" class="sr-only">
                                 <spring:message text="Description"/>
                             </form:label>
-                            <form:textarea class="form-control" path="product_description" rows="3"/>
+                            <form:textarea class="form-control" path="productDescription" rows="3"/>
                         </div>
-                        <c:if test="${!empty product.product_name}">
+                        <c:if test="${!empty product.productName}">
                             <input type="submit" class="btn btn-primary"
                                    value="<spring:message text="Edit Product"/>"/>
                         </c:if>
-                        <c:if test="${empty product.product_name}">
+                        <c:if test="${empty product.productName}">
                             <input type="submit" class="btn btn-primary"
                                    value="<spring:message text="Add Product"/>"/>
                         </c:if>
@@ -102,15 +102,11 @@
                     <tbody>
 
                         <c:forEach items="${users}" var="user">
-                            <c:if test="${user.roles[1]!='ROLE_ADMIN'}">
+                            <c:if test="${user.role!='ROLE_ADMIN'}">
                             <tr>
                                 <td>${user.username}</td>
                                 <td>${user.email}</td>
-                                <td>
-                                   <c:forEach items="${user.roles}" var="role">
-                                       ${role.name}|
-                                   </c:forEach>
-                                </td>
+                                <td>${user.role.name}</td>
                             </tr>
                             </c:if>
                         </c:forEach>

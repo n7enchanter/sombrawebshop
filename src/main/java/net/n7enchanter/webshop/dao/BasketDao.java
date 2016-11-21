@@ -6,8 +6,8 @@ import net.n7enchanter.webshop.model.Basket;
  * Created by Yuri on 06.11.2016.
  */
 public interface BasketDao {
-    void save_basket(Basket basket);
-    void update_basket(Basket basket);
+    void saveBasket(Basket basket);
+    void updateBasket(Basket basket);
     Basket getBasket(String username);
 
 }

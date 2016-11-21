@@ -16,7 +16,7 @@ public class Category {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     @Column(name = "category_name")
-    private String category_name;
+    private String categoryName;
     @ManyToMany(mappedBy = "categories")
     private List<Product> products;
 
@@ -31,12 +31,12 @@ public class Category {
         this.id = id;
     }
 
-    public String getCategory_name() {
-        return category_name;
+    public String getCategoryName() {
+        return categoryName;
     }
 
-    public void setCategory_name(String category_name) {
-        this.category_name = category_name;
+    public void setCategoryName(String categoryName) {
+        this.categoryName = categoryName;
     }
 
     public List<Product> getProducts() {
@@ -51,7 +51,7 @@ public class Category {
     public String toString() {
         return "Category{" +
                 "id=" + id +
-                ", category_name='" + category_name + '\'' +
+                ", categoryName='" + categoryName + '\'' +
                 ", products=" + products +
                 '}';
     }

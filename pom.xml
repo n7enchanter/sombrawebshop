@@ -165,6 +165,5 @@
     </dependency>
   </dependencies>
   <build>
-    <finalName>SombraTest</finalName>
   </build>
 </project>
